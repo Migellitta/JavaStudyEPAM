@@ -75,43 +75,47 @@ public class OptionalTask1 {
     }
     //        3.     Вывести на консоль те числа, длина которых меньше (больше) средней длины по всем числам, а также длину.
     public void run3 (String[] args) {
-        String incomingArgs = Arrays.toString(args);
-        System.out.println("Incoming " + incomingArgs);
-        int argsLengthForOnlyNumbers = args.length;
-        double averageAmountOfSymbols = 0;
-        for (String element : args) {
-            try {
-                double temp = Double.parseDouble(element.replace(",", "."));
-            } catch (Exception e) {
-                argsLengthForOnlyNumbers--;
+        if (args.length != 0){
+            String incomingArgs = Arrays.toString(args);
+            System.out.println("Incoming " + incomingArgs);
+            int argsLengthForOnlyNumbers = args.length;
+            double averageAmountOfSymbols = 0;
+            for (String element : args) {
+                try {
+                    double temp = Double.parseDouble(element.replace(",", "."));
+                } catch (Exception e) {
+                    argsLengthForOnlyNumbers--;
+                }
             }
-        }
-        String [] argsOnlyNumbers = new String[argsLengthForOnlyNumbers];
-        int amendment = 0;
-        for (int i = 0; i < args.length; i++) {
-            try {
-                int amountOfOriginalSymbols = args[i].length();
-                double temp = Double.parseDouble(args[i].replace(",", "."));
-                String temp1 = args[i];
-                averageAmountOfSymbols += amountOfOriginalSymbols;
-                argsOnlyNumbers[i - amendment] = temp1;
-            } catch (Exception e) {
-                amendment++;
+            String [] argsOnlyNumbers = new String[argsLengthForOnlyNumbers];
+            int amendment = 0;
+            for (int i = 0; i < args.length; i++) {
+                try {
+                    int amountOfOriginalSymbols = args[i].length();
+                    double temp = Double.parseDouble(args[i].replace(",", "."));
+                    String temp1 = args[i];
+                    averageAmountOfSymbols += amountOfOriginalSymbols;
+                    argsOnlyNumbers[i - amendment] = temp1;
+                } catch (Exception e) {
+                    amendment++;
+                }
             }
-        }
-        averageAmountOfSymbols /= argsLengthForOnlyNumbers;
-        System.out.println("Average length of numbers are " + averageAmountOfSymbols);
-        System.out.println("lower then average numbers are: ");
-        for (String temp2: argsOnlyNumbers) {
-            if (temp2.length() < averageAmountOfSymbols){
-                System.out.println(temp2);
+            averageAmountOfSymbols /= argsLengthForOnlyNumbers;
+            System.out.println("Average length of numbers are " + averageAmountOfSymbols);
+            System.out.println("lower then average numbers are: ");
+            for (String temp2: argsOnlyNumbers) {
+                if (temp2.length() < averageAmountOfSymbols){
+                    System.out.println(temp2);
+                }
             }
-        }
-        System.out.println("higher then average numbers are: ");
-        for (String temp2: argsOnlyNumbers) {
-            if (temp2.length() > averageAmountOfSymbols){
-                System.out.println(temp2);
+            System.out.println("higher then average numbers are: ");
+            for (String temp2: argsOnlyNumbers) {
+                if (temp2.length() > averageAmountOfSymbols) {
+                    System.out.println(temp2);
+                }
             }
+        } else {
+            System.out.println("No incoming values");
         }
     }
 }

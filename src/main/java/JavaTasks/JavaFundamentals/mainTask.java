@@ -58,13 +58,12 @@ public class mainTask {
         int multResult = 1;
         for (int i = 0; i <= args.length; i++) {
             try {
-                double a = Double.parseDouble(args[i]);
+                double a = Double.parseDouble(args[i].replace(",", "."));
                 int x = (int)Math.round(a);
                 sumResult += x;
                 multResult *= x;
             }
-            catch (Exception e){
-                continue;
+            catch (Exception ignored){
             }
         }
         if (sumResult != 0 && multResult != 1){
@@ -74,7 +73,7 @@ public class mainTask {
         }
     }
 //        5.   Ввести число от 1 до 12. Вывести на консоль название месяца, соответствующего данному числу. Осуществить проверку корректности ввода чисел.
-    public void run (String[] args) {
+    public void run5 (String[] args) {
         try {
             int monthNumber = Integer.parseInt(args[0]);
             if (0 < monthNumber && monthNumber < 13){
